@@ -45,8 +45,8 @@ function login(req, res) {
     .then(user => {
         console.log(creds.password, user.password);
         console.log(user);
-        if (user&& creds.password === user.password) {
-          // bcrypt.compareSync(creds.password, user.password)
+        if (user && bcrypt.compareSync(creds.password, user.password)) {
+          
           ////Why is compareSync not working?
           const token = generateToken(user);
 
