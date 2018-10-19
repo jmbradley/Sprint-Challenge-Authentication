@@ -35,10 +35,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <button onClick={this.getJokes}>Get Me My Jokes!</button>
           {this.state.jokes.map( joke => (
-            
-            <h3>{joke.setup}<br/>
-                {joke.punchline}
-            </h3>
+            <div className="jokebox">
+            <h3>{joke.setup}</h3>
+            <hr/>
+                <p>{joke.punchline}</p>
+            </div>
             ))}
         </header>
       </div>
