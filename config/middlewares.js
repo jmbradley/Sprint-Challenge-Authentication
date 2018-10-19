@@ -3,8 +3,27 @@ const jwt = require('jsonwebtoken');
 const jwtKey = require('../_secrets/keys').jwtKey;
 
 // quickly see what this file exports
+//JB - This file exports the middleware that checks
+///the token that has been generated.
 module.exports = {
   authenticate,
+  generateToken,
+};
+
+function generateToken(user) {
+  console.log('firing');
+  const jwtPayload = { 
+      ...user,
+      hello: 'JokeMan',
+      role: 'admin'
+  };
+
+  const jwtOptions = {
+      expiresIn: '2m',
+  };
+  console.log(jwtPayload, jwtKey, jwtOptions);
+  return jwt.sign(jwtPayload, jwtKey, jwtOptions)
+
 };
 
 // implementation details
